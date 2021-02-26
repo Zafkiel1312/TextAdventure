@@ -1,6 +1,6 @@
 class Language {
   constructor(rules, eventText) {
-    if (rules == undefined) {
+    if (rules == undefined || rules == []) {
       this.rules = [];
       this.currentNT = "";
     } else {
@@ -14,6 +14,8 @@ class Language {
 	} else {
 		this.eventText = eventText;
 	}
+
+	this.points = 0;
   }
 
 
@@ -39,6 +41,10 @@ class Language {
 
   getPath() {
     return this.path;
+  }
+
+  getPoints() {
+    return this.points;
   }
 
 
@@ -79,10 +85,17 @@ class Language {
         arr.push(item);
       }
     });
+
+    if (arr.length == 0) {
+      return false;
+    }
+
     let rand = Math.floor(Math.random() * arr.length);
     this.path[this.path.length-1] = arr[rand].getTo()[0];
     this.path.push(arr[rand].getTo()[1]);
     this.currentNT = arr[rand].getTo()[1];
 	this.eventText = arr[rand].getEventText();
+	this.points += arr[rand].getPoints();
+	return true;
   }
 }

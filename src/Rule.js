@@ -1,12 +1,18 @@
 class Rule {
-  constructor(from, to, eventText) {
+  constructor(from, to, eventText, points) {
     this.from = from;
     this.to = to;
 
 	if (eventText == undefined) {
-		this.eventText = "";
+	  this.eventText = "";
 	} else {
-		this.eventText = eventText;
+      this.eventText = eventText;
+	}
+
+	if (points == undefined) {
+	  this.points = 0;
+	} else {
+	  this.points = points;
 	}
   }
 
@@ -18,5 +24,8 @@ class Rule {
   }
   getEventText(){
     return this.eventText;
+  }
+  getPoints() {
+    return this.points;
   }
 }
