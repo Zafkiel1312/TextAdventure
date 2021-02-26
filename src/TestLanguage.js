@@ -4,6 +4,7 @@ function myOnLoad() {
   //Definition der Sprache
   let arr = [];
 
+
   arr.push(new Rule("A", ["a", "A"], "Du findest eine weitere Weggabelung. Möchtest du nach Rechts (a) oder nach links (b) gehen?"));
   arr.push(new Rule("A", ["a", "B"], "Du findest ein Haus am Wegesrand. Möchtest du hineingehen (a) oder möchtest du es ignorieren und weitergehen (b)?"));
   arr.push(new Rule("A", ["b", "C"], "Du findest einen Fluss. Weit entfernst siehst du etwas, was wie eine Brücke aussieht. Möchtest du zu dieser Brücke gehen (a) oder einfach durch den Fluss schwimmen (b)?"));
