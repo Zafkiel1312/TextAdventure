@@ -1,18 +1,26 @@
 
 table {
     text-align: center;
-
     width: 100%;
-
     border-left-width:   5px;
     border-left-style:   solid;
     border-color:        pink;
 }
 
 tr:nth-child(2) td:nth-child(2) {
+    height: 500px
     border-left-width:   5px;
     border-left-style:   solid;
     border-color:        blue;
+
+}
+
+.b{
+    width: 50%;
+    height: 50%;
+    margin-top: 25%;
+    margin-bottom: 25%;
+    background-color: olive;
 }
 
 
