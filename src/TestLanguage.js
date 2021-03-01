@@ -2,6 +2,7 @@
 function myOnLoad() {
   //----------------------------------------------------------------------------------------------------------------------------
   //Definition der Sprache
+
   let arr = [];
 
   arr.push(new Rule("A", ["a", "A"], "Du findest eine weitere Weggabelung. Möchtest du nach Rechts (a) oder nach links (b) gehen?"));
@@ -28,8 +29,11 @@ function myOnLoad() {
   arr.push(new Rule("F", ["a", "B"], "Nach einer Weile wachst du auf. Du fühlst dich komplett ausgeschlafen und bist hoch motiviert. In der ferne siehst du ein Haus, welches dir vorher nicht aufgefallen ist. Du begibst dich zu den Haus und stehst nun vor der entscheidung, ob du hinein gehst (a) oder einfach weiter dem Weg neben dem Haus folgst (b).", 50));
   arr.push(new Rule("F", ["a", "C"], "Nach einem unruhigen Schlaf wachst du auf und stellst erschrocken fest, dass du beklaut wurdest. Aus frust gehst du zu dem naheliegenden fluss und trinkst dort etwas Wasser. In der Ferne entdeckst du eine Brücke. Möchtest über die Brücke gehen (a) oder willst du durch den Fluss schwimmen (b)?", -50));
 
-  let l = new Language(arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
 
+  let l = new Language(arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
+  l.addToLeaderBoard("Max", 50);
+  l.addToLeaderBoard("Tim", 100);
+  l.addToLeaderBoard("Krissi", 1500);
   //Ende Sprach-Definition
   //----------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -72,6 +76,18 @@ function myOnLoad() {
 	} else {
 	  console.log("Eingabe ist kein mögliches Nicht-Terminal")
 	}
+  });
+
+  $("#restart").click(function() {
+    let json = JSON.stringify(l);
+
+    let arr = l.getLeaderBoard();
+    console.log(arr);
+
+    $("#path").html(l.getPath());
+    $("#currentT").html("Current non-Terminal: " + l.getCurrentNT());
+    $("#output").html(l.getEventText());
+    $("#points").html("Derzeitige Punkte: " + l.getPoints());
   });
 }
 

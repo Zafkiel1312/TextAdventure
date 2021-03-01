@@ -1,5 +1,11 @@
 class Language {
-  constructor(rules, eventText) {
+  constructor(rules, eventText, leaderBoard) {
+    if (eventText == undefined) {
+  		this.eventText = "";
+  	} else {
+  		this.eventText = eventText;
+  	}
+
     if (rules == undefined || rules == []) {
       this.rules = [];
       this.currentNT = "";
@@ -7,15 +13,16 @@ class Language {
       this.rules = rules;
       this.currentNT = this.rules[0].getFrom();
     }
+
     this.path = [this.currentNT];
 
-	if (eventText == undefined) {
-		this.eventText = "";
-	} else {
-		this.eventText = eventText;
-	}
-
 	this.points = 0;
+
+	if (leaderBoard == undefined) {
+	  this.leaderBoard = [];
+	} else {
+	  this.leaderBoard = leaderBoard;
+	}
   }
 
 
@@ -45,6 +52,22 @@ class Language {
 
   getPoints() {
     return this.points;
+  }
+
+  getLeaderBoard() {
+    return this.leaderBoard;
+  }
+
+  isFinished() {
+    return this.currentNT === undefined;
+  }
+
+  addToLeaderBoard(name, points) {
+    let temp = {
+      "name": name,
+      "points": points
+    }
+    this.leaderBoard.push(temp);
   }
 
 
@@ -97,5 +120,20 @@ class Language {
 	this.eventText = arr[rand].getEventText();
 	this.points += arr[rand].getPoints();
 	return true;
+  }
+
+  //Funktion zum parsen eines JSON-Strings zu einem Language-Objekt
+  //JSON.stringify(language) benutzen, um den JSON-String zu erhalten
+  static parse(json) {
+    let l = JSON.parse(json);
+
+    let arr = l["rules"];
+    let temp = [];
+    arr.forEach(function(item) {
+      let r = new Rule(item["from"], item["to"], item["eventText"], item["points"]);
+      temp.push(r);
+    });
+
+    return new Language(temp, l["eventText"], l["leaderBoard"]);
   }
 }
