@@ -1,4 +1,12 @@
 class Language {
+  /**
+    constructor für Language
+    rules enthält ein Array an Rule-Objekten, das from-NT der ersten Regel wird zum Start-NT der Sprache
+    eventText enthält das Ausgangsszenario der Sprache
+    leaderBoard enthält ein Array an Objekten mit dem Aufbau:
+      {"Name": "*",
+      "Points": *}
+  */
   constructor(rules, eventText, leaderBoard) {
     if (eventText == undefined) {
   		this.eventText = "";
@@ -25,11 +33,12 @@ class Language {
 	}
   }
 
-
+  //gibt das Array an regeln zurück
   getRules() {
     return this.rules;
   }
 
+  //fügt der Sprache eine neue Regel hinzu
   addRule(rule) {
     this.rules.push(rule);
     if (this.currentNT == "") {
@@ -38,30 +47,37 @@ class Language {
     }
   }
 
+  //gibt das derzeitige NT der Sprache zurück
   getCurrentNT() {
     return this.currentNT;
   }
 
+  //gibt das derzeitige Szenario der Sprache zurück
   getEventText() {
 	  return this.eventText;
   }
 
+  //gibt den bisher verwendeten Pfad zurück
   getPath() {
     return this.path;
   }
 
+  //gibt den aktuellen Punktestand der Sprache zurück
   getPoints() {
     return this.points;
   }
 
+  //gibt ein Array mit allen Leaderboard-Einträgen zurück
   getLeaderBoard() {
     return this.leaderBoard;
   }
 
+  //gibt true zurück, wenn die Sprache terminiert ist
   isFinished() {
     return this.currentNT === undefined;
   }
 
+  //fügt einen neuen Eintrag in das Leaderboard ein
   addToLeaderBoard(name, points) {
     let temp = {
       "name": name,
@@ -71,6 +87,7 @@ class Language {
   }
 
 
+  //gibt ein Array zurück, welches alle Regeln enthält, die nonTerminal als from-NT haben
   getPossibleRules(nonTerminal) {
     let arr = [];
     let nt = nonTerminal;
@@ -89,6 +106,7 @@ class Language {
     return arr;
   }
 
+  //gibt ein String zurück, welcher alle Regeln in HTML darstellt
   getRulesAsText() {
     let ret = "";
     this.rules.forEach(function(item) {
@@ -98,9 +116,11 @@ class Language {
     return ret;
   }
 
-  //extra option zum auswählen der Regel einfügen (index) --> Nicht unbedingt nötig
-  //wirft noch viele exceptions, muss behoben werden (wenn arr nach der Schleife leer ist)
-  //wenn sprache terminiert steht in #currentT undefined, nicht schön
+  /**
+    Wählt eine Regel, welche zu den aktuellen NT und dem benutzten T passt
+    gibt es mehrere mögliche Regeln, wird zufällig eine von diesen ausgewählt
+    Path, currentNT, eventText und Points werden entsprechend angepasst
+  */
   chooseRule(Terminal) {
     let arr = [];
     this.getPossibleRules().forEach(function(item) {

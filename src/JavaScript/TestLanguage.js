@@ -30,7 +30,7 @@ function myOnLoad() {
   arr.push(new Rule("F", ["a", "C"], "Nach einem unruhigen Schlaf wachst du auf und stellst erschrocken fest, dass du beklaut wurdest. Aus frust gehst du zu dem naheliegenden fluss und trinkst dort etwas Wasser. In der Ferne entdeckst du eine Brücke. Möchtest über die Brücke gehen (a) oder willst du durch den Fluss schwimmen (b)?", -50));
 
 
-  let l = new Language(arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
+  var l = new Language(arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
   l.addToLeaderBoard("Max", 50);
   l.addToLeaderBoard("Tim", 100);
   l.addToLeaderBoard("Krissi", 1500);
@@ -78,11 +78,14 @@ function myOnLoad() {
 	}
   });
 
+  //ToDo Funktioniert noch nicht so, wie es soll (Fehler bei Language.parse(json)?)
   $("#restart").click(function() {
     let json = JSON.stringify(l);
 
     let arr = l.getLeaderBoard();
     console.log(arr);
+
+    l = Language.parse(json);
 
     $("#path").html(l.getPath());
     $("#currentT").html("Current non-Terminal: " + l.getCurrentNT());
