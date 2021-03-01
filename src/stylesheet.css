@@ -15,12 +15,34 @@ tr:nth-child(2) td:nth-child(2) {
 
 }
 
+tr:nth-child(3) td:nth-child(2) {
+    text-align: left;
+}
+
+.a{
+    border: 1;
+}
+
 .b{
     width: 50%;
     height: 50%;
     margin-top: 25%;
     margin-bottom: 25%;
-    background-color: olive;
+    background-color: black;
+    color: white;
 }
 
+
+.c{
+    background-color: black;
+    color: white;
+    border-color: black;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.d{
+    height: 500px;
+}
 
