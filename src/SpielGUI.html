@@ -3,46 +3,40 @@
 <head>
     <link rel="stylesheet" href="stylesheet.css">
     <meta charset="UTF-8">
-    <title>Textadventure</title>
+    <title>Textadventuregame</title>
 </head>
 <body>
-
-    <table id="table" border="1" >
-        <tr>
-            <td id="z1" width="25%">
-                <h1>Menü</h1>
-            </td>
-            <td id="z2" width="50%">
-                <h1>Textadventuregame</h1>
-            </td>
-            <td id="z3" width="25%">
-                <h1>Leaderboard</h1>
-            </td>
-        </tr>
-        <tr>
-            <td id="z4" >
-                Sprachen <div></div>
-            </td>
-            <td id="z5">
-                <label class="a">Name of Game</label>
-            </td>
-            <td id="z6" rowspan="2">
-                1 2 3 <div></div>
-            </td>
-        </tr>
-        <tr>
-            <td id="z7">
-                Profil <div></div>
-            </td>
-            <td id="z8" class="b">
-                <div >
-                    <lable class="d">Game</lable>
-                    <br/>
-                    <input type="text" class="c">
-                </div>
-            </td>
-
-        </tr>
-    </table>
+<table>
+    <tr>
+        <td>
+            <h1 id="menueueber">Menü</h1>
+        </td>
+        <td>
+            <h1 id="textadventuregameueber">Textadventuregame</h1>
+        </td>
+        <td>
+            <h1 id="leaderboardueber">Leaderboard</h1>
+        </td>
+    </tr>
+</table>
+<div class="box" id="languageprofildiv">
+    <div id="language">
+        Sprachen
+    </div>
+    <br>
+    <div id="profil">
+        Profil
+    </div>
+</div>
+<div class="box" id="game">
+    <label id="labelgame">
+        Sie sehen einen Wald
+    </label>
+    <br>
+    <input type="text" id="inputgame" placeholder="Was möchtest du tun?">
+</div>
+<div class="box" id="leaderboard">
+    Leaderboard
+</div>
 </body>
 </html>

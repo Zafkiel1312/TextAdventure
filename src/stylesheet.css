@@ -1,48 +1,84 @@
-
-table {
+body {
     text-align: center;
-    width: 100%;
-    border-left-width:   5px;
-    border-left-style:   solid;
-    border-color:        pink;
-}
-
-tr:nth-child(2) td:nth-child(2) {
-    height: 500px
-    border-left-width:   5px;
-    border-left-style:   solid;
-    border-color:        blue;
-
-}
-
-tr:nth-child(3) td:nth-child(2) {
-    text-align: left;
-}
-
-.a{
-    border: 1;
-}
-
-.b{
-    width: 50%;
-    height: 50%;
-    margin-top: 25%;
-    margin-bottom: 25%;
-    background-color: black;
-    color: white;
-}
-
-
-.c{
-    background-color: black;
-    color: white;
-    border-color: black;
     margin: 0;
     padding: 0;
+}
+h1{
+    margin: 0;
+    padding: 0;
+    font-size: 35px;
+}
+table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    height: 5vh;
+}
+tr:nth-child(1) td:nth-child(1){
+    width: 20%;
+    border-style: none solid solid none;
+}
+tr:nth-child(1) td:nth-child(2){
+    width: 60%;
+    border-style: none solid solid solid;
+}
+tr:nth-child(1) td:nth-child(3){
+    width: 20%;
+    border-style: none none solid solid;
+}
+#menueueber {
+
+}
+#textadventuregameueber {
+
+}
+#leaderboardueber {
+
+}
+.box {
+    float: left;
+    height: 95vh;
+}
+#languageprofildiv {
+    width: 20%;
+    background-color: green;
+}
+#language{
+    background-color: green;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 80%;
+}
+#profil {
+    float: left;
+    background: darkgray;
+    height: 20%;
     width: 100%;
 }
 
-.d{
-    height: 500px;
+#game {
+    width: 60%;
+    background-color: black;
+    text-align: left;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#labelgame{
+    background-color: black;
+    color: white;
+    font-size: 16px;
+}
+#inputgame{
+    background-color: black;
+    color: white;
+    border: 0;
+    width: 100%;
+    font-size: 15px;
+}
+#leaderboard {
+    width: 20%;
+    background-color: blue;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
