@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="stylesheet.css">
     <meta charset="UTF-8">
     <title>Textadventuregame</title>
+    <script src="dropdown.js"></script>
 </head>
 <body>
 <table>
@@ -19,15 +20,28 @@
         </td>
     </tr>
 </table>
+<!--  ------------------------------------------------------------------------------------------ -->
 <div class="box" id="languageprofildiv">
     <div id="language">
-        Sprachen
+        <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="">laden</a>
+                <a href="">bearbeiten</a>
+                <a href="">löschen</a>
+            </div>
+        </div>
+        <br>
+        <div>
+            <button type="button ">+</button>
+        </div>
     </div>
     <br>
     <div id="profil">
         Profil
     </div>
 </div>
+<!--  ------------------------------------------------------------------------------------------ -->
 <div class="box" id="game">
     <label id="labelgame">
         Sie sehen einen Wald
@@ -35,8 +49,10 @@
     <br>
     <input type="text" id="inputgame" placeholder="Was möchtest du tun?">
 </div>
+<!--  ------------------------------------------------------------------------------------------ -->
 <div class="box" id="leaderboard">
     Leaderboard
 </div>
+
 </body>
 </html>
