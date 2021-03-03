@@ -124,12 +124,12 @@ class Language {
   chooseRule(Terminal) {
     let arr = [];
     this.getPossibleRules().forEach(function(item) {
-      if (Terminal == item.getTo()[0]) {
+      if (Terminal === item.getTo()[0]) {
         arr.push(item);
       }
     });
 
-    if (arr.length == 0) {
+    if (arr.length === 0) {
       return false;
     }
 

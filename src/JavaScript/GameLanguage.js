@@ -35,4 +35,18 @@ function startGame() {
     //----------------------------------------------------------------------------------------------------------------------------------------------------
 
     $("#labelgame").text(l.getEventText());
+
+    $("#inputgame").on("keydown",function(e) {
+        if (e.key === "Enter") {
+            let nt = $(this).val();
+
+            if (l.chooseRule(nt)) {
+                $(this).before('<label class="labelgame">' + nt + '<!label><br>');
+                $(this).before('<label class="labelgame">' + l.getEventText() + '<!label><br>');
+                $(this).val("");
+            } else {
+                $(this).before('<label class="labelgame">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+            }
+        }
+    });
 }

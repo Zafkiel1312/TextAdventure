@@ -43,18 +43,18 @@ function myOnLoad() {
   $("#path").html(l.getPath());
   $("#points").html("Derzeitige Punkte: " + l.getPoints());
 
-  $("#print").click(function() {
+  $("#print").on("click",function() {
     $("#output").html(l.getRulesAsText());
   });
 
-  $("#check").click(function() {
+  $("#check").on("click",function() {
     let x = $("#current").val();
     let rules = l.getPossibleRules(x);
     let ret = new Language(rules);
     $("#output").html(ret.getRulesAsText());
   });
 
-  $("#next").click(function() {
+  $("#next").on("click",function() {
 	  /*
     let x = l.getCurrentNT();
     let rules = l.getPossibleRules(x);
@@ -64,7 +64,7 @@ function myOnLoad() {
 	$("#output").html(l.getEventText());
   });
 
-  $("#nextStep").click(function() {
+  $("#nextStep").on("click",function() {
     let x = $("#chooseStep").val();
     let chosen = l.chooseRule(x);
 
@@ -79,7 +79,7 @@ function myOnLoad() {
   });
 
   //ToDo Funktioniert noch nicht so, wie es soll (Fehler bei Language.parse(json)?)
-  $("#restart").click(function() {
+  $("#restart").on("click", function() {
     let json = JSON.stringify(l);
 
     let arr = l.getLeaderBoard();

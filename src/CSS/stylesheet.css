@@ -63,7 +63,7 @@ tr:nth-child(1) td:nth-child(3){
     overflow-x: hidden;
     overflow-y: auto;
 }
-#labelgame{
+#labelgame, .labelgame{
     background-color: black;
     color: white;
     font-size: 16px;
