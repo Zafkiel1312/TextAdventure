@@ -34,18 +34,26 @@ function startGame() {
     //Ende Sprach-Definition
     //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-    $("#labelgame").text(l.getEventText());
+    $(".labelgame").text(l.getEventText());
 
     $("#inputgame").on("keydown",function(e) {
         if (e.key === "Enter") {
             let nt = $(this).val();
+            if (nt === "!restart") {
+                l = new Language(arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
 
-            if (l.chooseRule(nt)) {
-                $(this).before('<label class="labelgame">' + nt + '<!label><br>');
+                $(".labelgame").remove();
+                $("#game > br").remove();
                 $(this).before('<label class="labelgame">' + l.getEventText() + '<!label><br>');
                 $(this).val("");
             } else {
-                $(this).before('<label class="labelgame">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                if (l.chooseRule(nt)) {
+                    $(this).before('<label class="labelgame">' + nt + '<!label><br>');
+                    $(this).before('<label class="labelgame">' + l.getEventText() + '<!label><br>');
+                    $(this).val("");
+                } else {
+                    $(this).before('<label class="labelgame">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                }
             }
         }
     });
