@@ -78,12 +78,8 @@ function myOnLoad() {
 	}
   });
 
-  //ToDo Funktioniert noch nicht so, wie es soll (Fehler bei Language.parse(json)?)
   $("#restart").on("click", function() {
     let json = JSON.stringify(l);
-
-    let arr = l.getLeaderBoard();
-    console.log(arr);
 
     l = Language.parse(json);
 

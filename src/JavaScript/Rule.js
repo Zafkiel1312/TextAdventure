@@ -10,13 +10,13 @@ class Rule {
     this.from = from;
     this.to = to;
 
-	if (eventText == undefined) {
+	if (eventText === undefined) {
 	  this.eventText = "";
 	} else {
       this.eventText = eventText;
 	}
 
-	if (points == undefined) {
+	if (points === undefined) {
 	  this.points = 0;
 	} else {
 	  this.points = points;

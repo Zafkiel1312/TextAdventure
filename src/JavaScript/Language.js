@@ -2,19 +2,21 @@ class Language {
   /**
     constructor für Language
     rules enthält ein Array an Rule-Objekten, das from-NT der ersten Regel wird zum Start-NT der Sprache
-    eventText enthält das Ausgangsszenario der Sprache
+    startText enthält das Ausgangsszenario der Sprache
     leaderBoard enthält ein Array an Objekten mit dem Aufbau:
       {"Name": "*",
       "Points": *}
   */
-  constructor(rules, eventText, leaderBoard) {
-    if (eventText == undefined) {
+  constructor(rules, startText, leaderBoard) {
+    if (startText === undefined) {
+        this.startText = "";
   		this.eventText = "";
   	} else {
-  		this.eventText = eventText;
+        this.startText = startText;
+  		this.eventText = startText;
   	}
 
-    if (rules == undefined || rules == []) {
+    if (rules === undefined || rules === []) {
       this.rules = [];
       this.currentNT = "";
     } else {
@@ -26,7 +28,7 @@ class Language {
 
 	this.points = 0;
 
-	if (leaderBoard == undefined) {
+	if (leaderBoard === undefined) {
 	  this.leaderBoard = [];
 	} else {
 	  this.leaderBoard = leaderBoard;
@@ -41,7 +43,7 @@ class Language {
   //fügt der Sprache eine neue Regel hinzu
   addRule(rule) {
     this.rules.push(rule);
-    if (this.currentNT == "") {
+    if (this.currentNT === "") {
       this.currentNT = rule.getFrom();
       this.path = [this.currentNT];
     }
@@ -93,12 +95,12 @@ class Language {
     let nt = nonTerminal;
     let that = this;
     this.rules.forEach(function(item) {
-      if (nt == undefined) {
-        if (item.getFrom() == that.currentNT) {
+      if (nt === undefined) {
+        if (item.getFrom() === that.currentNT) {
           arr.push(item);
         }
       } else {
-        if (item.getFrom() == nt) {
+        if (item.getFrom() === nt) {
           arr.push(item);
         }
       }
@@ -154,6 +156,6 @@ class Language {
       temp.push(r);
     });
 
-    return new Language(temp, l["eventText"], l["leaderBoard"]);
+    return new Language(temp, l["startText"], l["leaderBoard"]);
   }
 }
