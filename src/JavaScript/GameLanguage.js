@@ -29,7 +29,7 @@ function startGame() {
     arr.push(new Rule("F", ["a", "C"], "Nach einem unruhigen Schlaf wachst du auf und stellst erschrocken fest, dass du beklaut wurdest. Aus frust gehst du zu dem naheliegenden fluss und trinkst dort etwas Wasser. In der Ferne entdeckst du eine Brücke. Möchtest über die Brücke gehen (a) oder willst du durch den Fluss schwimmen (b)?", -50));
 
 
-    let l = new Language(arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
+    let l = new Language("Testsprache", arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
 
     //Ende Sprach-Definition
     //----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ function startGame() {
         if (e.key === "Enter") {
             let nt = $(this).val();
             if (nt === "!restart") {
-                l = new Language(arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
+                l = new Language("Testsprache", arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
 
                 $(".labelgame").remove();
                 $("#game > br").remove();

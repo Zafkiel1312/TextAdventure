@@ -1,20 +1,15 @@
 class Language {
   /**
     constructor für Language
+    name enthält den Namen der Sprache
     rules enthält ein Array an Rule-Objekten, das from-NT der ersten Regel wird zum Start-NT der Sprache
     startText enthält das Ausgangsszenario der Sprache
     leaderBoard enthält ein Array an Objekten mit dem Aufbau:
       {"Name": "*",
       "Points": *}
   */
-  constructor(rules, startText, leaderBoard) {
-    if (startText === undefined) {
-        this.startText = "";
-  		this.eventText = "";
-  	} else {
-        this.startText = startText;
-  		this.eventText = startText;
-  	}
+  constructor(name, rules, startText, leaderBoard) {
+    this.name = name;
 
     if (rules === undefined || rules === []) {
       this.rules = [];
@@ -26,13 +21,26 @@ class Language {
 
     this.path = [this.currentNT];
 
-	this.points = 0;
+    if (startText === undefined) {
+      this.startText = "";
+      this.eventText = "";
+    } else {
+      this.startText = startText;
+      this.eventText = startText;
+    }
+
+    this.points = 0;
 
 	if (leaderBoard === undefined) {
 	  this.leaderBoard = [];
 	} else {
 	  this.leaderBoard = leaderBoard;
 	}
+  }
+
+  //gibt den Namen der Sprache zurück
+  getName() {
+    return this.name;
   }
 
   //gibt das Array an regeln zurück
@@ -156,6 +164,6 @@ class Language {
       temp.push(r);
     });
 
-    return new Language(temp, l["startText"], l["leaderBoard"]);
+    return new Language(l["name"], temp, l["startText"], l["leaderBoard"]);
   }
 }

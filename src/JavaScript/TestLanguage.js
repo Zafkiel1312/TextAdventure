@@ -30,7 +30,7 @@ function myOnLoad() {
   arr.push(new Rule("F", ["a", "C"], "Nach einem unruhigen Schlaf wachst du auf und stellst erschrocken fest, dass du beklaut wurdest. Aus frust gehst du zu dem naheliegenden fluss und trinkst dort etwas Wasser. In der Ferne entdeckst du eine Brücke. Möchtest über die Brücke gehen (a) oder willst du durch den Fluss schwimmen (b)?", -50));
 
 
-  let l = new Language(arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
+  let l = new Language("Testsprache", arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
   l.addToLeaderBoard("Max", 50);
   l.addToLeaderBoard("Tim", 100);
   l.addToLeaderBoard("Krissi", 1500);
@@ -38,6 +38,7 @@ function myOnLoad() {
   //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+  $("#LanguageName").html("Name der Sprache: " + l.getName());
   $("#output").html(l.getEventText());
   $("#currentT").html("Derzeitiges Nicht-Terminal: " + l.getCurrentNT());
   $("#path").html(l.getPath());
@@ -50,7 +51,7 @@ function myOnLoad() {
   $("#check").on("click",function() {
     let x = $("#current").val();
     let rules = l.getPossibleRules(x);
-    let ret = new Language(rules);
+    let ret = new Language("", rules);
     $("#output").html(ret.getRulesAsText());
   });
 
@@ -83,10 +84,13 @@ function myOnLoad() {
 
     l = Language.parse(json);
 
+    $("#LanguageName").html("Name der Sprache: " + l.getName());
     $("#path").html(l.getPath());
     $("#currentT").html("Current non-Terminal: " + l.getCurrentNT());
     $("#output").html(l.getEventText());
     $("#points").html("Derzeitige Punkte: " + l.getPoints());
+
+    console.log(l.getName());
   });
 }
 
