@@ -90,7 +90,7 @@ function myOnLoad() {
     $("#output").html(l.getEventText());
     $("#points").html("Derzeitige Punkte: " + l.getPoints());
 
-    console.log(l.getName());
+    console.log(JSON.stringify(l));
   });
 }
 
