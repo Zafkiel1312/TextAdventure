@@ -58,15 +58,18 @@ tr:nth-child(1) td:nth-child(3){
 
 #game {
     width: 60%;
-    background-color: black;
-    text-align: left;
     overflow-x: hidden;
     overflow-y: auto;
-}
-.labelgame{
     background-color: black;
     color: white;
+    text-align: left;
+}
+.gamename{
+    text-align: center;
+}
+.labelgamecontent{
     font-size: 16px;
+    width: 100%;
 }
 #inputgame{
     background-color: black;
@@ -74,7 +77,6 @@ tr:nth-child(1) td:nth-child(3){
     border: 0;
     width: 100%;
     font-size: 15px;
-    align: bottom;
 }
 #leaderboard {
     width: 20%;
