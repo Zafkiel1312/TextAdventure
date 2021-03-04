@@ -41,7 +41,7 @@ tr:nth-child(1) td:nth-child(3){
 }
 #languageprofildiv {
     width: 20%;
-    background-color: green;
+    background-color: red;
 }
 #language{
     background-color: green;
@@ -74,6 +74,7 @@ tr:nth-child(1) td:nth-child(3){
     border: 0;
     width: 100%;
     font-size: 15px;
+    align: bottom;
 }
 #leaderboard {
     width: 20%;
