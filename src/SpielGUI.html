@@ -1,4 +1,4 @@
-<!-- ToDo Punktestand für aktuellen Spielverlauf hinzufügen -->
+<!-- ToDo Punktestand rechtsbündig machen -->
 <!-- ToDo Textfeldersatzt finden -->
 <!-- ToDo An richtige Stelle springen, GameLanguage Zeile 53 danach -->
 <!-- ToDo Tabelle einfügen Leaderboard -->
@@ -56,13 +56,20 @@
 </div>
 <!--  ------------------------------------------------------------------------------------------ -->
 <div class="box" id="game">
-        <h1 class="gamename">Textadventure</h1>
+        <div id="divgamename">
+            <h1 class="gamename">Textadventure</h1>
+        </div>
         <br>
-        <label class="labelgamecontent">
-            Sie sehen einen Wald
-        </label>
-        <br>
-        <input type="text" id="inputgame" placeholder="Was möchtest du tun?">
+        <div id="divgamecontent">
+            <label class="labelgamecontent">
+                Sie sehen einen Wald
+            </label>
+        </div>
+        <div id="divinput">
+            <input type="text" id="inputgame" placeholder="Was möchtest du tun?">
+            <label class="score">0</label>
+        </div>
+
 </div>
 <!--  ------------------------------------------------------------------------------------------ -->
 <div class="box" id="leaderboard">
