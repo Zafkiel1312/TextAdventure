@@ -61,6 +61,7 @@ function startGame() {
     });
     */
     $(".labelgamecontent").text(l.getEventText());
+    $(".labelgamecontent").append("<br>");
 
     $("#inputgame").on("keydown",function(e) {
         if (e.key === "Enter") {
@@ -70,16 +71,17 @@ function startGame() {
 
                 $(".labelgamecontent").remove();
                 $("#game > br").remove();
-                $(this).before('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
+                $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
                 $(this).val("");
+                $(".score").text("Punkte: 0");
             } else {
                 if (l.chooseRule(nt)) {
-                    $(this).before('<label class="labelgamecontent">' + nt + '<!label><br>');
-                    $(this).before('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
+                    $("#divgamecontent").append('<label class="labelgamecontent">' + nt + '<!label><br>');
+                    $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
                     $(this).val("");
                     $(".score").text("Punkte: " + l.getPoints());
                 } else {
-                    $(this).before('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                    $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
                     $(this).val("");
                 }
             }
