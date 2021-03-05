@@ -8,21 +8,21 @@ h1{
     padding: 0;
     font-size: 35px;
 }
-table {
+#tabletop{
     width: 100%;
     text-align: center;
     border-collapse: collapse;
     height: 5vh;
 }
-tr:nth-child(1) td:nth-child(1){
+#cell1{
     width: 20%;
     border-style: none solid solid none;
 }
-tr:nth-child(1) td:nth-child(2){
+.cell2{
     width: 60%;
     border-style: none solid solid solid;
 }
-tr:nth-child(1) td:nth-child(3){
+#cell3{
     width: 20%;
     border-style: none none solid solid;
 }
@@ -89,9 +89,17 @@ tr:nth-child(1) td:nth-child(3){
 }
 #leaderboard {
     width: 20%;
-    background-color: blue;
+    background-color: #67e4ab;
     overflow-x: hidden;
     overflow-y: auto;
+}
+.scroreboard {
+    width: 100%;
+    border-color: black;
+    border-collapse: collapse;
+}
+#scroreboardtop {
+
 }
 
 .dropbtn {

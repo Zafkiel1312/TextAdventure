@@ -1,4 +1,3 @@
-<!-- ToDo Punktestand rechtsbündig machen -->
 <!-- ToDo Textfeldersatzt finden -->
 <!-- ToDo An richtige Stelle springen, GameLanguage Zeile 53 danach -->
 <!-- ToDo Tabelle einfügen Leaderboard -->
@@ -20,15 +19,15 @@
     <script src="JavaScript/GameLanguage.js"></script>
 </head>
 <body onload="startGame()">
-<table>
+<table id="tabletop">
     <tr>
-        <td>
+        <td id="cell1">
             <h1 id="menueueber">Menü</h1>
         </td>
-        <td>
+        <td class="cell2">
             <h1 id="textadventuregameueber" class="textadventuregame">Textadventuregame</h1>
         </td>
-        <td>
+        <td id="cell3">
             <h1 id="leaderboardueber">Leaderboard</h1>
         </td>
     </tr>
@@ -63,7 +62,19 @@
 </div>
 <!--  ------------------------------------------------------------------------------------------ -->
 <div class="box" id="leaderboard">
-    Leaderboard
+    <table class="scroreboard">
+        <tr id="scroreboardtop">
+            <th>Nr.</th>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+
+        </tr>
+    </table>
 </div>
 
 </body>
