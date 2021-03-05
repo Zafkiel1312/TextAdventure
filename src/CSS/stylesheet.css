@@ -61,19 +61,20 @@ tr:nth-child(1) td:nth-child(3){
     background-color: black;
     color: white;
     text-align: left;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
 #divgamecontent{
-
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 .labelgamecontent{
     font-size: 16px;
     width: 100%;
 }
 #divinput{
-
+    position: absolute;
+    bottom: 0;
+    width: 60%;
 }
 #inputgame{
     background-color: black;
