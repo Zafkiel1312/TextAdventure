@@ -51,8 +51,10 @@ function startGame() {
                     $(this).before('<label class="labelgamecontent">' + nt + '<!label><br>');
                     $(this).before('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
                     $(this).val("");
+                    $(".score").text("Punkte: " + l.getPoints());
                 } else {
                     $(this).before('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                    $(this).val("");
                 }
             }
         }
