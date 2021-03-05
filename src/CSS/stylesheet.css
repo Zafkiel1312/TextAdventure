@@ -95,12 +95,15 @@ tr:nth-child(1) td:nth-child(3){
 }
 
 .dropbtn {
-    background-color: #3498DB;
-    color: white;
+    background-color: #7ce563;
+    color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
+    margin: 5px;
+    margin-bottom: 0px;
+    width: 100%;
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -110,16 +113,19 @@ tr:nth-child(1) td:nth-child(3){
 .dropdown {
     position: relative;
     display: inline-block;
+    width: 90%;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    width: 100%;
+    margin-left: 5px;
+    padding: 0;
 }
 
 .dropdown-content a {
