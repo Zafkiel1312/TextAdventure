@@ -2,6 +2,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    background-color: black;
 }
 h1{
     margin: 0;
@@ -13,6 +14,7 @@ h1{
     text-align: center;
     border-collapse: collapse;
     height: 5vh;
+    background-color: white;
 }
 #cell1{
     width: 20%;
@@ -57,10 +59,12 @@ h1{
 }
 
 #game {
-    width: 60%;
+    width: 58%;
     background-color: black;
     color: white;
     text-align: left;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 #divgamecontent{
@@ -112,13 +116,14 @@ h1{
     font-size: 16px;
     border: none;
     cursor: pointer;
-    margin: 5px;
+    margin: 2px;
     margin-bottom: 0px;
+    margin-top: 5px;
     width: 100%;
 }
 
 .dropbtn:hover, .dropbtn:focus {
-    background-color: #2980B9;
+    background-color: #4bff16;
 }
 
 .dropdown {
@@ -135,7 +140,7 @@ h1{
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     width: 100%;
-    margin-left: 5px;
+    margin-left: 2px;
     padding: 0;
 }
 
