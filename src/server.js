@@ -19,9 +19,9 @@ app.get('/languages', function(req, res) {
     })
 });
 
-app.get('/testsprache', function(req, res){
+/*app.get('/Testsprache', function(req, res){
     res.sendFile(path.join(__dirname, 'data', 'Testsprache.json'));
-})
+});*/
 
 app.listen(3000); // NodeJS-WebServer lauscht an Port 3000
 console.log("Running at port 3000");
