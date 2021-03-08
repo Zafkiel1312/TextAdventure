@@ -1,8 +1,8 @@
-// ToDo error
+//ToDo Cross-Origin Error beheben
 
 function getLanguageJson(name){
     let json = "hallo";
-    let url = "localhost:3000/data/" + name + ".json";
+    let url = "http://localhost:3000/data/" + name + ".json";
     console.log("test1");
     $.ajax({
         url: url,
