@@ -1,4 +1,5 @@
 //ToDo Senden von json von Client zu Server
+//ToDo Funktion getAllLanguages() hinzufügen (liest languages.txt aus und gibt ein Array an Strings mit allen eingetragenen Sprachen zurück)
 
 async function getLanguageJson(name){
     let json = "hallo";
