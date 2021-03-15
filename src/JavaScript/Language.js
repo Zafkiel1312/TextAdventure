@@ -152,11 +152,10 @@ class Language {
 	return true;
   }
 
-  //Funktion zum parsen eines JSON-Strings zu einem Language-Objekt
+  //Funktion zum parsen eines JSON-Objekts zu einem Language-Objekt
   //JSON.stringify(language) benutzen, um den JSON-String zu erhalten
-  static parse(json) {
-    let l = JSON.parse(json);
-
+  //JSON.parse(language) benutzen, um das Objekt zu erhalten
+  static parse(l) {
     let arr = l["rules"];
     let temp = [];
     arr.forEach(function(item) {

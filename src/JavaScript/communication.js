@@ -1,14 +1,12 @@
 //ToDo Senden von json von Client zu Server
 
-function getLanguageJson(name){
+async function getLanguageJson(name){
     let json = "hallo";
     let url = "http://localhost:3000/data/" + name + ".json";
-    console.log("test1");
-    $.ajax({
+    await $.ajax({
         url: url,
         dataType: "json",
         success: function(result) {
-            console.log(result);
             json = result;
         },
         complete: function(e, xhr, settings) {
@@ -25,6 +23,5 @@ function getLanguageJson(name){
             console.log(errorThrown);
         }
     });
-    console.log(json);
     return json;
 }
