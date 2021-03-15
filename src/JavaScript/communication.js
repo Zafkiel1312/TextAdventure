@@ -1,4 +1,4 @@
-//ToDo Cross-Origin Error beheben
+//ToDo Senden von json von Client zu Server
 
 function getLanguageJson(name){
     let json = "hallo";
@@ -8,7 +8,7 @@ function getLanguageJson(name){
         url: url,
         dataType: "json",
         success: function(result) {
-            console.log("result");
+            console.log(result);
             json = result;
         },
         complete: function(e, xhr, settings) {

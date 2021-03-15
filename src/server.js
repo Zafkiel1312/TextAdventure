@@ -3,6 +3,17 @@ let path = require("path");
 
 let app = express();
 
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:63342');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, DELETE');
+
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    next();
+});
+
 
 app.use(express.static(__dirname));
 app.get('/', function(req, res) {
