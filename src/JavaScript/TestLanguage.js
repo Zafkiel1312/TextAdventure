@@ -93,9 +93,11 @@ function myOnLoad() {
     console.log(JSON.stringify(l));
   });
 
-  $("#languagejson").on("click", function(){
-    getLanguageJson("Testsprache");
-  })
+  $("#allLanguages").on("click", function(){
+    getAllLanguages().then(function (array){
+      console.log(array);
+    });
+  });
 }
 
 
