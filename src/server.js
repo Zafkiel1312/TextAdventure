@@ -3,6 +3,7 @@ let path = require("path");
 
 let app = express();
 
+// Erlauben des Zugriffs auf Dateien von einem anderen Port aus
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:63342');
 
@@ -15,11 +16,13 @@ app.use(function(req, res, next) {
 });
 
 
+// Anzeigen der SpielGUI beim Aufrufen der URL localhost:3000/
 app.use(express.static(__dirname));
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'SpielGUI.html'));
 });
 
+// Senden des Inhalts der Datei languages.txt als String beim Aufrufen der URL localhost:3000/languages
 app.get('/languages', function(req, res) {
     let fs = require("fs");
     fs.readFile(path.join(__dirname,  'data', 'languages.txt'), function (err, data){

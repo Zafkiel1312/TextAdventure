@@ -1,5 +1,6 @@
 //ToDo Senden von json von Client zu Server
 
+// gibt die angegebene Sprache als json-Datei zurück
 async function getLanguageJson(name){
     let json = "hallo";
     let url = "http://localhost:3000/data/" + name + ".json";
@@ -26,6 +27,7 @@ async function getLanguageJson(name){
     return json;
 }
 
+// gibt ein Array aller Sprachen aus der Datei languages.txt zurück
 async function getAllLanguages() {
     let languages;
     let url = "http://localhost:3000/data/languages.txt";
