@@ -55,3 +55,10 @@ async function getAllLanguages() {
 
     return languages;
 }
+
+function sendJson (string){
+    let ws = new WebSocket('ws://localhost:3000');
+    ws.addEventListener('open', e => {
+        ws.send(string);
+    })
+}

@@ -1,7 +1,26 @@
 let express = require("express");
+let app = express();
+let server = require('http').createServer(app);
+let WebSocket = require('ws');
 let path = require("path");
 
-let app = express();
+//
+let wss = new WebSocket.Server({server});
+let sprache;
+let name;
+
+//ToDo Werden die WebSockets automatisch geschlossen oder entstehen durch die Funktion immer mehr unnötige Verbindungen?
+wss.on('connection', function connection(ws){
+    ws.on('message', message=> {
+        sprache = JSON.parse(message);
+        name = sprache['name'];
+        let fs = require("fs");
+        fs.writeFile(__dirname + '/data/' + name +'.json', message, function (err) {
+            if (err) throw err;
+            console.log('Data written to file!');
+        })
+    })
+});
 
 // Erlauben des Zugriffs auf Dateien von einem anderen Port aus
 app.use(function(req, res, next) {
@@ -37,5 +56,4 @@ app.get('/languages', function(req, res) {
     res.sendFile(path.join(__dirname, 'data', 'Testsprache.json'));
 });*/
 
-app.listen(3000); // NodeJS-WebServer lauscht an Port 3000
-console.log("Running at port 3000");
+server.listen(3000, () => console.log('Running on port 3000'));

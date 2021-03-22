@@ -1,6 +1,6 @@
-{"name":"Testsprache",
+{"name":"blubb",
   "rules":[
-    {"from":"A","to":["a","A"],"eventText":"A -> aA (a oder b)", "points":10},
+    {"from":"A","to":["a","A"],"eventText":"A -> aA (a oder b)", "points":0},
     {"from":"A","to":["b","B"],"eventText":"A -> bB (a oder c)", "points":0},
     {"from":"B","to":["a","A"],"eventText":"B -> aA (a oder b)", "points":-10},
     {"from":"B","to":["c","C"],"eventText":"B -> cC (c)", "points":0},

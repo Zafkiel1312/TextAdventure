@@ -98,6 +98,29 @@ function myOnLoad() {
       console.log(array);
     });
   });
+
+  $("#sendJson").on("click", function(){
+    sendJson('{"name":"blubb",\n' +
+        '  "rules":[\n' +
+        '    {"from":"A","to":["a","A"],"eventText":"A -> aA (a oder b)", "points":0},\n' +
+        '    {"from":"A","to":["b","B"],"eventText":"A -> bB (a oder c)", "points":0},\n' +
+        '    {"from":"B","to":["a","A"],"eventText":"B -> aA (a oder b)", "points":-10},\n' +
+        '    {"from":"B","to":["c","C"],"eventText":"B -> cC (c)", "points":0},\n' +
+        '    {"from":"C","to":["c","C"],"eventText":"C -> cC (c)", "points":5},\n' +
+        '    {"from":"C","to":["c"],"eventText":"C -> c (Ende)", "points":0}\n' +
+        '  ],\n' +
+        '  "currentNT":"A",\n' +
+        '  "path":["A"],\n' +
+        '  "startText":"A (a oder b)",\n' +
+        '  "eventText":"A (a oder b)",\n' +
+        '  "points":0,\n' +
+        '  "leaderBoard":[\n' +
+        '    {"name":"Max","points":50},\n' +
+        '    {"name":"Tim","points":100},\n' +
+        '    {"name":"Krissi","points":1500}\n' +
+        '  ]\n' +
+        '}');
+  });
 }
 
 
