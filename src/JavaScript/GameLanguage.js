@@ -33,33 +33,14 @@ function startGame() {
 */
     //Ende Sprach-Definition
     //----------------------------------------------------------------------------------------------------------------------------------------------------
-    /*
-    $(".labelgamecontent").text(l.getEventText());
 
-    $("#inputgame").on("keydown",function(e) {
-        if (e.key === "Enter") {
-            let nt = $(this).val();
-            if (nt === "!restart") {
-                l = new Language("Testsprache", arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
-
-                $(".labelgamecontent").remove();
-                $("#game > br").remove();
-                $(this).before('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
-                $(this).val("");
-            } else {
-                if (l.chooseRule(nt)) {
-                    $(this).before('<label class="labelgamecontent">' + nt + '<!label><br>');
-                    $(this).before('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
-                    $(this).val("");
-                    $(".score").text("Punkte: " + l.getPoints());
-                } else {
-                    $(this).before('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
-                    $(this).val("");
-                }
-            }
-        }
+    getAllLanguages().then(function(data) {
+        data.forEach(function(name) {
+            //ToDo Hier erstellen der DropDown-Menüs einfügen
+        });
     });
-    */
+
+    /*
     getLanguageJson("Testsprache").then(function(json) {
         let l = Language.parse(json);
 
@@ -92,4 +73,6 @@ function startGame() {
             }
         });
     });
+    */
+
 }

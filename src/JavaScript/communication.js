@@ -29,7 +29,7 @@ async function getLanguageJson(name){
 
 // gibt ein Array aller Sprachen aus der Datei languages.txt zurück
 async function getAllLanguages() {
-    let languages;
+    let languages = [];
     let url = "http://localhost:3000/data/languages.txt";
     await $.ajax({
         url: url,
@@ -52,4 +52,6 @@ async function getAllLanguages() {
             console.log(errorThrown);
         }
     });
+
+    return languages;
 }
