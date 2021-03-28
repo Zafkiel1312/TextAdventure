@@ -72,6 +72,19 @@ function startGame() {
                     getLanguageJson(name).then(function(json) {
                         let l = Language.parse(json);
 
+                        /*
+                        ToDo Anzeigen des Leaderboards beim Start einer Sprache hinzufügen
+                        $(".leaderboardeintrag").remove();
+                        let leaderBoard = $("#scoreboard")
+                        let i = 0;
+                        l.getLeaderBoard().forEach(function(entry) {
+                            i++;
+                            leaderBoard.append("tr")
+                                .append()
+
+                        })
+                         */
+
                         $(".labelgamecontent").text(l.getEventText());
                         $(".labelgamecontent").append("<br>");
 
@@ -94,8 +107,12 @@ function startGame() {
                                         $(this).val("");
                                         $(".score").text("Punkte: " + l.getPoints());
                                     } else {
-                                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
-                                        $(this).val("");
+                                        if (!l.isFinished()) {
+                                            $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                                            $(this).val("");
+                                        } else {
+                                            gameFinished(l);
+                                        }
                                     }
                                 }
                             }
@@ -113,3 +130,9 @@ function startGame() {
             </div>
         </div> */
 }
+
+function gameFinished(l) {
+
+}
+
+
