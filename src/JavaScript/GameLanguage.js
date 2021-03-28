@@ -35,6 +35,8 @@ function startGame() {
     //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+    //ToDo Funktionalität für beenden einer Sprache hinzufügen
+    //ToDo Anzeigen des Leaderboards hinzufügen
     getAllLanguages().then(function(data) {
         data.forEach(function(name) {
                 let idDropdown = 'myDropdown', idOuterDiv = 'outerDiv', idOuterBtn = 'outerBtn', idDropdownBtn = 'dropdownBtn';
@@ -59,7 +61,46 @@ function startGame() {
 
 
                 $(jqDropdownBtn).on('click', function() {
-                    //ToDo Funktionalität der Sprachen ieder einfügen
+                    $(".labelgamecontent").remove();
+                    $("#game > br").remove();
+                    $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz <!label><br>');
+                    $("#inputgame").val("");
+                    $("#inputgame").off("keydown");
+                    $(".score").text("Punkte: 0");
+                    $(".labelgamecontent").text("Bitte warten Sie kurz");
+
+                    getLanguageJson(name).then(function(json) {
+                        let l = Language.parse(json);
+
+                        $(".labelgamecontent").text(l.getEventText());
+                        $(".labelgamecontent").append("<br>");
+
+                        $("#inputgame").on("keydown", function (e) {
+                            if (e.key === "Enter") {
+                                let nt = $(this).val();
+                                if (nt === "!restart") {
+                                    //l = new Language("Testsprache", arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
+                                    l = Language.parse(JSON.parse(JSON.stringify(l)));
+
+                                    $(".labelgamecontent").remove();
+                                    $("#game > br").remove();
+                                    $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
+                                    $(this).val("");
+                                    $(".score").text("Punkte: 0");
+                                } else {
+                                    if (l.chooseRule(nt)) {
+                                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + '<!label><br>');
+                                        $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
+                                        $(this).val("");
+                                        $(".score").text("Punkte: " + l.getPoints());
+                                    } else {
+                                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                                        $(this).val("");
+                                    }
+                                }
+                            }
+                        });
+                    });
                 })
         });
     });
@@ -71,39 +112,4 @@ function startGame() {
                 <button id="b1" class="dropdown-button">spielen</button>
             </div>
         </div> */
-    /*
-    getLanguageJson("Testsprache").then(function(json) {
-        let l = Language.parse(json);
-
-        $(".labelgamecontent").text(l.getEventText());
-        $(".labelgamecontent").append("<br>");
-
-        $("#inputgame").on("keydown", function (e) {
-            if (e.key === "Enter") {
-                let nt = $(this).val();
-                if (nt === "!restart") {
-                    //l = new Language("Testsprache", arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
-                    l = Language.parse(JSON.parse(JSON.stringify(l)));
-
-                    $(".labelgamecontent").remove();
-                    $("#game > br").remove();
-                    $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
-                    $(this).val("");
-                    $(".score").text("Punkte: 0");
-                } else {
-                    if (l.chooseRule(nt)) {
-                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + '<!label><br>');
-                        $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
-                        $(this).val("");
-                        $(".score").text("Punkte: " + l.getPoints());
-                    } else {
-                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
-                        $(this).val("");
-                    }
-                }
-            }
-        });
-    });
-    */
-
 }
