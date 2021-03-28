@@ -33,25 +33,34 @@ function startGame() {
 */
     //Ende Sprach-Definition
     //----------------------------------------------------------------------------------------------------------------------------------------------------
-    var  i = 0;
+
 
     getAllLanguages().then(function(data) {
         data.forEach(function(name) {
-                i++;
-                var idDropdown = 'myDropdown', idbtn = 'btn', idb = 'b';
-                idDropdown = idDropdown + i;
-                idbtn = idbtn + i;
-                idb = idb + i;
-                $("#language").append("<div class='dropdown' id=idbtn> </div>");
-                idbtn = "#" + idbtn;
-                console.log(idbtn);
-                $(idbtn).append("<button onclick='myFunction()' class='dropbtn'>Game1 </button>");
-                $(idbtn).append("<div id=idDropdown, class='dropdown-content'></div>");
-                idDropdown = "#" + idDropdown;
-                console.log(idDropdown);
-                $(idDropdown).append("<button id=idb class='dropdown-button'>spielen</button>");
+                let idDropdown = 'myDropdown', idOuterDiv = 'outerDiv', idOuterBtn = 'outerBtn', idDropdownBtn = 'dropdownBtn';
+                idDropdown = idDropdown + name;
+                idOuterDiv = idOuterDiv + name;
+                idOuterBtn = idOuterBtn + name;
+                idDropdownBtn = idDropdownBtn + name;
 
-            //ToDo Hier erstellen der DropDown-Menüs einfügen
+                let jqOuterDiv = "#"+idOuterDiv, jqOuterBtn = "#"+idOuterBtn, jqDropdown = "#"+idDropdown, jqDropdownBtn = "#"+idDropdownBtn;
+
+                $("#language").append("<div class='dropdown' id='" + idOuterDiv + "'> </div>");
+                //console.log(idOuterDiv);
+                $(jqOuterDiv).append("<button id='" + idOuterBtn + "' class='dropbtn'>" + name + " </button>");
+                $(jqOuterDiv).append("<div id='" + idDropdown + "' class='dropdown-content'></div>");
+
+                $(jqOuterBtn).on('click', function() {
+                    myFunction(idDropdown);
+                });
+
+                //console.log(idDropdown);
+                $(jqDropdown).append("<button id='" + idDropdownBtn + "' class='dropdown-button'>spielen</button>");
+
+
+                $(jqDropdownBtn).on('click', function() {
+                    //ToDo Funktionalität der Sprachen ieder einfügen
+                })
         });
     });
 

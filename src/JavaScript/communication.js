@@ -36,7 +36,7 @@ async function getAllLanguages() {
         dataType: "text",
         success: function(result) {
             languages = result.split(';;');
-            console.log(languages);
+            //console.log(languages);
         },
         complete: function(e, xhr, settings) {
             if (e.status === 304) {
