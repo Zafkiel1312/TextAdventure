@@ -33,13 +33,35 @@ function startGame() {
 */
     //Ende Sprach-Definition
     //----------------------------------------------------------------------------------------------------------------------------------------------------
+    var  i = 0;
 
     getAllLanguages().then(function(data) {
         data.forEach(function(name) {
+                i++;
+                var idDropdown = 'myDropdown', idbtn = 'btn', idb = 'b';
+                idDropdown = idDropdown + i;
+                idbtn = idbtn + i;
+                idb = idb + i;
+                $("#language").append("<div class='dropdown' id=idbtn> </div>");
+                idbtn = "#" + idbtn;
+                console.log(idbtn);
+                $(idbtn).append("<button onclick='myFunction()' class='dropbtn'>Game1 </button>");
+                $(idbtn).append("<div id=idDropdown, class='dropdown-content'></div>");
+                idDropdown = "#" + idDropdown;
+                console.log(idDropdown);
+                $(idDropdown).append("<button id=idb class='dropdown-button'>spielen</button>");
+
             //ToDo Hier erstellen der DropDown-Menüs einfügen
         });
     });
 
+     /*
+        <div class="dropdown" >
+            <button onclick="myFunction()" class="dropbtn">Game1</button>
+            <div id="myDropdown" class="dropdown-content">
+                <button id="b1" class="dropdown-button">spielen</button>
+            </div>
+        </div> */
     /*
     getLanguageJson("Testsprache").then(function(json) {
         let l = Language.parse(json);

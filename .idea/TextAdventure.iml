@@ -10,5 +10,10 @@
     <orderEntry type="library" name="@types/jquery" level="application" />
     <orderEntry type="library" name="@types/node" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="@types/node" level="application" />
+    <orderEntry type="library" name="@types/express" level="application" />
+    <orderEntry type="library" name="@types/express-jsonschema" level="application" />
+    <orderEntry type="library" name="JQuery" level="application" />
+    <orderEntry type="library" name="@types/npm-run" level="application" />
   </component>
 </module>

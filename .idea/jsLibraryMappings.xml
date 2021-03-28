@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{jquery}" />
-    <file url="PROJECT" libraries="{@types/jquery, @types/node}" />
+    <file url="PROJECT" libraries="{@types/express, @types/express-jsonschema, @types/jquery, @types/node, @types/npm-run, JQuery}" />
+    <includedPredefinedLibrary name="HTTP Response Handler" />
   </component>
 </project>
