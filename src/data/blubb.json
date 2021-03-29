@@ -13,8 +13,7 @@
   "eventText":"A (a oder b)",
   "points":0,
   "leaderBoard":[
-    {"name":"Max","points":50},
-    {"name":"Tim","points":100},
+    {"name":"Tim","points":3000},
     {"name":"Krissi","points":1500}
   ]
 }

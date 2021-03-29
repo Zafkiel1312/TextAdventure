@@ -72,18 +72,21 @@ function startGame() {
                     getLanguageJson(name).then(function(json) {
                         let l = Language.parse(json);
 
-                        /*
-                        ToDo Anzeigen des Leaderboards beim Start einer Sprache hinzufügen
+
                         $(".leaderboardeintrag").remove();
                         let leaderBoard = $("#scoreboard")
                         let i = 0;
+                        console.log(l.getLeaderBoard());
                         l.getLeaderBoard().forEach(function(entry) {
                             i++;
-                            leaderBoard.append("tr")
-                                .append()
+                            leaderBoard.append("<tr class='leaderboardeintrag'>" +
+                                "<td>" + i + "</td>" +
+                                "<td>" + entry["name"] + "</td>" +
+                                "<td>" + entry["points"] + "</td>" +
+                                "</tr>");
 
                         })
-                         */
+
 
                         $(".labelgamecontent").text(l.getEventText());
                         $(".labelgamecontent").append("<br>");
