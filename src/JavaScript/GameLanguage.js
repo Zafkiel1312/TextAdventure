@@ -35,7 +35,6 @@ function startGame() {
     //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-    //ToDo Funktionalität für beenden einer Sprache hinzufügen
     getAllLanguages().then(function(data) {
         data.forEach(function(name) {
                 let idDropdown = 'myDropdown', idOuterDiv = 'outerDiv', idOuterBtn = 'outerBtn', idDropdownBtn = 'dropdownBtn';
@@ -71,6 +70,7 @@ function startGame() {
                     getLanguageJson(name).then(function(json) {
                         let l = Language.parse(json);
 
+                        $("#textadventuregameueber").text(l.getName());
 
                         $(".leaderboardeintrag").remove();
                         let leaderBoard = $("#scoreboard")
