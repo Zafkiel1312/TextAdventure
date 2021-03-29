@@ -94,6 +94,7 @@ class Language {
       "points": points
     }
     this.leaderBoard.push(temp);
+    this.leaderBoard.sort((a, b) => parseFloat(b.points) - parseFloat(a.points));
   }
 
 
