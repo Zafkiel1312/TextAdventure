@@ -121,6 +121,7 @@ function startGame() {
                                             //$("#inputgame").off("keydown");
                                             $(".score").text("Punkte: 0");
                                             $(".labelgamecontent").text("Bitte warten Sie kurz");
+                                            $("#inputgame").attr("placeholder", "Was möchtest du tun?");
                                             getLanguageJson(l.getName()).then(function(json) {
                                                 l = Language.parse(json);
 
@@ -154,6 +155,7 @@ function startGame() {
                                     }
                                 }
                                 if (l.isFinished()) {
+                                    $("#inputgame").attr("placeholder", "Geben Sie Ihren Namen ein.");
                                     $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Geben Sie einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>')
                                 }
                             }
