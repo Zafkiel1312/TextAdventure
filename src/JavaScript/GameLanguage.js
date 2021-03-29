@@ -113,13 +113,40 @@ function startGame() {
                                         $(this).val("");
                                     } else {
                                         l.addToLeaderBoard(nt, l.getPoints())
-                                        sendJson(l.stringify()).then(function() {
-                                            //ToDo Anpassen des Leaderboards nach dem Beenden eines Spiels
+                                        sendJson(JSON.stringify(l)).then(function() {
+                                            $(".labelgamecontent").remove();
+                                            $("#game > br").remove();
+                                            $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz</label><br>');
+                                            $("#inputgame").val("");
+                                            //$("#inputgame").off("keydown");
+                                            $(".score").text("Punkte: 0");
+                                            $(".labelgamecontent").text("Bitte warten Sie kurz");
+                                            getLanguageJson(l.getName()).then(function(json) {
+                                                l = Language.parse(json);
+
+                                                $(".leaderboardeintrag").remove();
+                                                let leaderBoard = $("#scoreboard")
+                                                let i = 0;
+                                                console.log(l.getLeaderBoard());
+                                                l.getLeaderBoard().forEach(function(entry) {
+                                                    i++;
+                                                    leaderBoard.append("<tr class='leaderboardeintrag'>" +
+                                                        "<td>" + i + "</td>" +
+                                                        "<td>" + entry["name"] + "</td>" +
+                                                        "<td>" + entry["points"] + "</td>" +
+                                                        "</tr>");
+
+                                                })
+
+
+                                                $(".labelgamecontent").text(l.getEventText());
+                                                $(".labelgamecontent").append("<br>");
+                                            })
                                         });
                                     }
                                 }
                                 if (l.isFinished()) {
-                                    $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Geben Sie einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>label>')
+                                    $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Geben Sie einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>')
                                 }
                             }
                         });

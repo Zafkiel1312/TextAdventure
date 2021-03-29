@@ -84,7 +84,7 @@ class Language {
 
   //gibt true zurück, wenn die Sprache terminiert ist
   isFinished() {
-    return this.currentNT === undefined;
+    return (this.currentNT === undefined);
   }
 
   //fügt einen neuen Eintrag in das Leaderboard ein
