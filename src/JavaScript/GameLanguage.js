@@ -141,8 +141,16 @@ function startGame() {
 
                                                 $(".labelgamecontent").text(l.getEventText());
                                                 $(".labelgamecontent").append("<br>");
-                                            })
-                                        });
+                                            },
+                                                function(reason) {
+                                                $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
+                                                console.log(reason);
+                                                })
+                                        },
+                                            function(reason) {
+                                            $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
+                                            console.log(reason);
+                                            });
                                     }
                                 }
                                 if (l.isFinished()) {
@@ -150,10 +158,18 @@ function startGame() {
                                 }
                             }
                         });
-                    });
+                    },
+                        function(reason) {
+                            $(".labelgamecontent").text("Verbindung zum Server unterbrochen");
+                            console.log(reason);
+                        });
                 })
         });
-    });
+    },
+        function(reason) {
+            $(".labelgamecontent").text("Verbindung zum Server nicht möglich");
+            console.log(reason);
+        });
 
      /*
         <div class="dropdown" >
