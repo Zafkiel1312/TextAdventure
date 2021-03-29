@@ -36,7 +36,6 @@ function startGame() {
 
 
     //ToDo Funktionalität für beenden einer Sprache hinzufügen
-    //ToDo Anzeigen des Leaderboards hinzufügen
     getAllLanguages().then(function(data) {
         data.forEach(function(name) {
                 let idDropdown = 'myDropdown', idOuterDiv = 'outerDiv', idOuterBtn = 'outerBtn', idDropdownBtn = 'dropdownBtn';
@@ -109,14 +108,18 @@ function startGame() {
                                         $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
                                         $(this).val("");
                                         $(".score").text("Punkte: " + l.getPoints());
+                                    } else if (!l.isFinished()){
+                                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                                        $(this).val("");
                                     } else {
-                                        if (!l.isFinished()) {
-                                            $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
-                                            $(this).val("");
-                                        } else {
-                                            gameFinished(l);
-                                        }
+                                        l.addToLeaderBoard(nt, l.getPoints())
+                                        sendJson(l.stringify()).then(function() {
+                                            //ToDo Anpassen des Leaderboards nach dem Beenden eines Spiels
+                                        });
                                     }
+                                }
+                                if (l.isFinished()) {
+                                    $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Geben Sie einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>label>')
                                 }
                             }
                         });
@@ -134,8 +137,6 @@ function startGame() {
         </div> */
 }
 
-function gameFinished(l) {
 
-}
 
 
