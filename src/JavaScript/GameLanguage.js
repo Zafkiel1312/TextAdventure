@@ -37,135 +37,27 @@ function startGame() {
 
     getAllLanguages().then(function(data) {
         data.forEach(function(name) {
-                let idDropdown = 'myDropdown', idOuterDiv = 'outerDiv', idOuterBtn = 'outerBtn', idDropdownBtn = 'dropdownBtn';
-                idDropdown = idDropdown + name;
-                idOuterDiv = idOuterDiv + name;
-                idOuterBtn = idOuterBtn + name;
-                idDropdownBtn = idDropdownBtn + name;
-
-                let jqOuterDiv = "#"+idOuterDiv, jqOuterBtn = "#"+idOuterBtn, jqDropdown = "#"+idDropdown, jqDropdownBtn = "#"+idDropdownBtn;
-
-                $("#language").append("<div class='dropdown' id='" + idOuterDiv + "'> </div>");
-                //console.log(idOuterDiv);
-                $(jqOuterDiv).append("<button id='" + idOuterBtn + "' class='dropbtn'>" + name + " </button>");
-                $(jqOuterDiv).append("<div id='" + idDropdown + "' class='dropdown-content'></div>");
-
-                $(jqOuterBtn).on('click', function() {
-                    myFunction(idDropdown);
-                });
-
-                //console.log(idDropdown);
-                $(jqDropdown).append("<button id='" + idDropdownBtn + "' class='dropdown-button'>spielen</button>");
+            //let idDropdown = 'myDropdown', idOuterDiv = 'outerDiv', idOuterBtn = 'outerBtn', idDropdownBtn = 'dropdownBtn';
+            let idOuterDiv = 'outerDiv' + name;
+            let idOuterBtn = 'outerBtn' + name;
+            let idDropdown = 'myDropdown' + name;
+            let idDropdownBtn = 'dropdownBtn' + name;
 
 
-                $(jqDropdownBtn).on('click', function() {
-                    $(".labelgamecontent").remove();
-                    $("#game > br").remove();
-                    $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz <!label><br>');
-                    $("#inputgame").val("");
-                    $("#inputgame").off("keydown");
-                    $(".score").text("Punkte: 0");
-                    $(".labelgamecontent").text("Bitte warten Sie kurz");
+            $("#language").append("<div class='dropdown' id='" + idOuterDiv + "'> </div>");
+            //console.log(idOuterDiv);
+            $("#" + idOuterDiv).append("<button id='" + idOuterBtn + "' class='dropbtn'>" + name + " </button>")
+                .append("<div id='" + idDropdown + "' class='dropdown-content'></div>");
 
-                    getLanguageJson(name).then(function(json) {
-                        let l = Language.parse(json);
+            $("#" + idOuterBtn).on('click', function() {
+                myFunction(idDropdown);
+            });
 
-                        $("#textadventuregameueber").text(l.getName());
+            $("#" + idDropdown).append("<button id='" + idDropdownBtn + "' class='dropdown-button'>spielen</button>");
 
-                        $(".leaderboardeintrag").remove();
-                        let leaderBoard = $("#scoreboard")
-                        let i = 0;
-                        console.log(l.getLeaderBoard());
-                        l.getLeaderBoard().forEach(function(entry) {
-                            i++;
-                            leaderBoard.append("<tr class='leaderboardeintrag'>" +
-                                "<td>" + i + "</td>" +
-                                "<td>" + entry["name"] + "</td>" +
-                                "<td>" + entry["points"] + "</td>" +
-                                "</tr>");
-
-                        })
-
-
-                        $(".labelgamecontent").text(l.getEventText());
-                        $(".labelgamecontent").append("<br>");
-
-                        $("#inputgame").on("keydown", function (e) {
-                            if (e.key === "Enter") {
-                                let nt = $(this).val();
-                                if (nt === "!restart") {
-                                    //l = new Language("Testsprache", arr, "Du bist ein Wanderer auf Reisen und triffst auf eine Weggabelung. Du kannst nach rechts (a) oder nach links (b) gehen. Wofür entscheidest du dich?");
-                                    l = Language.parse(JSON.parse(JSON.stringify(l)));
-
-                                    $(".labelgamecontent").remove();
-                                    $("#game > br").remove();
-                                    $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
-                                    $(this).val("");
-                                    $(".score").text("Punkte: 0");
-                                } else {
-                                    if (l.chooseRule(nt)) {
-                                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + '<!label><br>');
-                                        $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
-                                        $(this).val("");
-                                        $(".score").text("Punkte: " + l.getPoints());
-                                    } else if (!l.isFinished()){
-                                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
-                                        $(this).val("");
-                                    } else {
-                                        l.addToLeaderBoard(nt, l.getPoints())
-                                        sendJson(JSON.stringify(l)).then(function() {
-                                            $(".labelgamecontent").remove();
-                                            $("#game > br").remove();
-                                            $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz</label><br>');
-                                            $("#inputgame").val("");
-                                            //$("#inputgame").off("keydown");
-                                            $(".score").text("Punkte: 0");
-                                            $(".labelgamecontent").text("Bitte warten Sie kurz");
-                                            $("#inputgame").attr("placeholder", "Was möchtest du tun?");
-                                            getLanguageJson(l.getName()).then(function(json) {
-                                                l = Language.parse(json);
-
-                                                $(".leaderboardeintrag").remove();
-                                                let leaderBoard = $("#scoreboard")
-                                                let i = 0;
-                                                console.log(l.getLeaderBoard());
-                                                l.getLeaderBoard().forEach(function(entry) {
-                                                    i++;
-                                                    leaderBoard.append("<tr class='leaderboardeintrag'>" +
-                                                        "<td>" + i + "</td>" +
-                                                        "<td>" + entry["name"] + "</td>" +
-                                                        "<td>" + entry["points"] + "</td>" +
-                                                        "</tr>");
-
-                                                })
-
-
-                                                $(".labelgamecontent").text(l.getEventText());
-                                                $(".labelgamecontent").append("<br>");
-                                            },
-                                                function(reason) {
-                                                $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
-                                                console.log(reason);
-                                                })
-                                        },
-                                            function(reason) {
-                                            $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
-                                            console.log(reason);
-                                            });
-                                    }
-                                }
-                                if (l.isFinished()) {
-                                    $("#inputgame").attr("placeholder", "Geben Sie Ihren Namen ein.");
-                                    $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Geben Sie einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>')
-                                }
-                            }
-                        });
-                    },
-                        function(reason) {
-                            $(".labelgamecontent").text("Verbindung zum Server unterbrochen");
-                            console.log(reason);
-                        });
-                })
+            $("#" + idDropdownBtn).on('click', function() {
+                chooseLanguage(name);
+            })
         });
     },
         function(reason) {
@@ -180,6 +72,104 @@ function startGame() {
                 <button id="b1" class="dropdown-button">spielen</button>
             </div>
         </div> */
+}
+
+
+function refreshLeaderboard(l) {
+    $(".leaderboardeintrag").remove();
+    let i = 0;
+    l.getLeaderBoard().forEach(function(entry) {
+        i++;
+        $("#scoreboard").append("<tr class='leaderboardeintrag'>" +
+            "<td>" + i + "</td>" +
+            "<td>" + entry["name"] + "</td>" +
+            "<td>" + entry["points"] + "</td>" +
+            "</tr>");
+    });
+}
+
+
+function chooseLanguage(name) {
+    $(".labelgamecontent").remove();
+    $("#divgamecontent > br").remove();
+    $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz <!label><br>');
+    $("#inputgame").val("")
+        .off("keydown");
+    $(".score").text("Punkte: 0");
+    $(".labelgamecontent").text("Bitte warten Sie kurz");
+
+    getLanguageJson(name).then(function(json) {
+        let l = Language.parse(json);
+
+        $("#textadventuregameueber").text(l.getName());
+
+        refreshLeaderboard(l);
+
+
+        $(".labelgamecontent").text(l.getEventText())
+            .append("<br>");
+
+        $("#inputgame").on("keydown", function (e) {
+            if (e.key === "Enter") {
+                let nt = $(this).val();
+                if (nt === "!restart") {
+                    l = Language.parse(JSON.parse(JSON.stringify(l)));
+
+                    $(".labelgamecontent").remove();
+                    $("#divgamecontent > br").remove();
+                    $("#divgamecontent").append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
+                    $(this).val("");
+                    $(".score").text("Punkte: 0");
+                } else {
+                    if (l.chooseRule(nt)) {
+                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + '<!label><br>')
+                            .append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
+                        $(this).val("");
+                        $(".score").text("Punkte: " + l.getPoints());
+                    } else if (!l.isFinished()){
+                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                        $(this).val("");
+                    } else {
+                        l.addToLeaderBoard(nt, l.getPoints())
+                        sendJson(JSON.stringify(l)).then(function() {
+                                $(".labelgamecontent").remove();
+                                $("#game > br").remove();
+                                $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz</label><br>');
+                                $("#inputgame").val("")
+                                    .attr("placeholder", "Was möchtest du tun?");
+                                $(".score").text("Punkte: 0");
+                                $(".labelgamecontent").text("Bitte warten Sie kurz");
+                                getLanguageJson(l.getName()).then(function(json) {
+                                        l = Language.parse(json);
+
+                                        refreshLeaderboard(l);
+
+
+                                        $(".labelgamecontent").text(l.getEventText())
+                                            .append("<br>");
+                                    },
+                                    function(reason) {
+                                        $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
+                                        console.log(reason);
+                                    })
+                            },
+                            function(reason) {
+                                $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
+                                console.log(reason);
+                            });
+                    }
+                }
+                if (l.isFinished()) {
+                    $("#inputgame").attr("placeholder", "Geben Sie Ihren Namen ein.");
+                    $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Geben Sie einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>')
+                }
+            }
+        });
+    },
+    function(reason) {
+        $(".labelgamecontent").text("Verbindung zum Server unterbrochen");
+        console.log(reason);
+    });
 }
 
 
