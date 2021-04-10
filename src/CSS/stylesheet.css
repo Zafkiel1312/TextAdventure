@@ -25,6 +25,7 @@ h1{
     border-style: none solid solid solid;
 }
 #cell3{
+    text-align: center;
     width: 20%;
     border-style: none none solid solid;
 }
@@ -99,8 +100,9 @@ h1{
     overflow-x: hidden;
     overflow-y: auto;
 }
-.scroreboard {
+#scroreboard {
     width: 100%;
+    text-align: center;
     border-color: black;
     border-collapse: collapse;
 }
@@ -119,7 +121,7 @@ h1{
     cursor: pointer;
     margin: 2px;
     margin-bottom: 0px;
-    margin-top: 5px;
+    margin-top: 10px;
     width: 100%;
 }
 
@@ -146,20 +148,19 @@ h1{
     overflow: hidden;
 }
 .dropdown-button{
-    background-color: #7ce563;
+    background-color: aquamarine;
     color: black;
     padding: 16px;
     font-size: 16px;
     border: none;
     cursor: pointer;
-    margin: 2px;
-    margin-bottom: 0px;
-    margin-top: 5px;
     width: 100%;
     overflow: hidden;
 }
+.dropdown-button:hover{background-color: aqua}
 .dropdown-content a {
     color: black;
+
     padding: 12px 16px;
     text-decoration: none;
     display: block;
