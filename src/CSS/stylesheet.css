@@ -111,7 +111,15 @@ h1{
     border-collapse: collapse;
     border-color: black;
 }
-
+#number{
+    width: 5%;
+}
+#name{
+    width: 70%;
+}
+#score{
+    width: 25%;
+}
 .dropbtn {
     background-color: #7ce563;
     color: black;
