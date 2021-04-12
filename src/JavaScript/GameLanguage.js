@@ -137,22 +137,22 @@ function chooseLanguage(name) {
                         sendJson(JSON.stringify(l)).then(function() {
                                 $(".labelgamecontent").remove();
                                 $("#game > br").remove();
-                                $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz</label><br>');
+                                $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz</label>');
                                 $("#inputgame").val("")
-                                    .attr("placeholder", "Was möchtest du tun?");
+                                    .attr("placeholder", "Was möchtest du tun?")
+                                    .attr("disabled", "true");
                                 $(".score").text("Punkte: 0");
-                                $(".labelgamecontent").text("Bitte warten Sie kurz");
 
                                 //console.log(l.getName());
 
                                 setTimeout(f => getLanguageJson(l.getName()).then(function(json1) {
-                                    console.log(json1);
                                         l = Language.parse(json1);
 
                                         refreshLeaderboard(l);
 
                                         $(".labelgamecontent").text(l.getEventText())
                                             .append("<br>");
+                                        $("#inputgame").removeAttr("disabled");
                                     },
                                     function(reason) {
                                         $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
