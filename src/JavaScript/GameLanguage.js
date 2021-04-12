@@ -143,10 +143,11 @@ function chooseLanguage(name) {
                                 $(".score").text("Punkte: 0");
                                 $(".labelgamecontent").text("Bitte warten Sie kurz");
 
+                                //console.log(l.getName());
 
-
-                                getLanguageJson(l.getName()).then(function(json) {
-                                        l = Language.parse(json);
+                                setTimeout(f => getLanguageJson(l.getName()).then(function(json1) {
+                                    console.log(json1);
+                                        l = Language.parse(json1);
 
                                         refreshLeaderboard(l);
 
@@ -156,7 +157,7 @@ function chooseLanguage(name) {
                                     function(reason) {
                                         $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
                                         console.log(reason);
-                                    })
+                                    }), 1500);
                             },
                             function(reason) {
                                 $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');

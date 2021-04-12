@@ -58,7 +58,7 @@ async function getAllLanguages() {
 
 async function sendJson (string){
     let ws = new WebSocket('ws://localhost:3000');
-    await ws.addEventListener('open', e => {
+    ws.addEventListener('open', e => {
         ws.send(string);
     })
 }
