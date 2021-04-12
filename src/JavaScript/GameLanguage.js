@@ -143,11 +143,12 @@ function chooseLanguage(name) {
                                 $(".score").text("Punkte: 0");
                                 $(".labelgamecontent").text("Bitte warten Sie kurz");
 
-                                refreshLeaderboard(l);
+
 
                                 getLanguageJson(l.getName()).then(function(json) {
                                         l = Language.parse(json);
 
+                                        refreshLeaderboard(l);
 
                                         $(".labelgamecontent").text(l.getEventText())
                                             .append("<br>");
