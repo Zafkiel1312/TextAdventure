@@ -123,11 +123,14 @@ function chooseLanguage(name) {
                 } else {
                     if (l.chooseRule(nt)) {
                         $("#divgamecontent").append('<label class="labelgamecontent">' + nt + '<!label><br>')
-                            .append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>');
+                            .append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>')
+                            .scrollTop($("#divgamecontent")[0].scrollHeight);
+                        // var scrollBottom = $(window).scrollTop() + $(window).height();
                         $(this).val("");
                         $(".score").text("Punkte: " + l.getPoints());
                     } else if (!l.isFinished()){
-                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>');
+                        $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>')
+                            .scrollTop($("#divgamecontent")[0].scrollHeight);
                         $(this).val("");
                     } else {
                         l.addToLeaderBoard(nt, l.getPoints())
@@ -139,10 +142,11 @@ function chooseLanguage(name) {
                                     .attr("placeholder", "Was möchtest du tun?");
                                 $(".score").text("Punkte: 0");
                                 $(".labelgamecontent").text("Bitte warten Sie kurz");
+
+                                refreshLeaderboard(l);
+
                                 getLanguageJson(l.getName()).then(function(json) {
                                         l = Language.parse(json);
-
-                                        refreshLeaderboard(l);
 
 
                                         $(".labelgamecontent").text(l.getEventText())
@@ -162,6 +166,7 @@ function chooseLanguage(name) {
                 if (l.isFinished()) {
                     $("#inputgame").attr("placeholder", "Geben Sie Ihren Namen ein.");
                     $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Geben Sie einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>')
+                        .scrollTop($("#divgamecontent")[0].scrollHeight);
                 }
             }
         });
