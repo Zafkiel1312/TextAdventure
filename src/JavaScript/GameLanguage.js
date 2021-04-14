@@ -92,11 +92,10 @@ function refreshLeaderboard(l) {
 function chooseLanguage(name) {
     $(".labelgamecontent").remove();
     $("#divgamecontent > br").remove();
-    $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz <!label><br>');
+    $("#divgamecontent").append('<label class="labelgamecontent">Bitte kurz warten <!label><br>');
     $("#inputgame").val("")
         .off("keydown");
     $(".score").text("Punkte: 0");
-    $(".labelgamecontent").text("Bitte warten Sie kurz");
 
     getLanguageJson(name).then(function(json) {
         let l = Language.parse(json);
@@ -112,6 +111,7 @@ function chooseLanguage(name) {
         $("#inputgame").on("keydown", function (e) {
             if (e.key === "Enter") {
                 let nt = $(this).val();
+                let notWaiting = true;
                 if (nt === "!restart") {
                     l = Language.parse(JSON.parse(JSON.stringify(l)));
 
@@ -128,46 +128,43 @@ function chooseLanguage(name) {
                         // var scrollBottom = $(window).scrollTop() + $(window).height();
                         $(this).val("");
                         $(".score").text("Punkte: " + l.getPoints());
-                    } else if (!l.isFinished()){
+                    } else if (!l.isFinished()) {
                         $("#divgamecontent").append('<label class="labelgamecontent">' + nt + ' ist keine gültige Eingabe.<!label><br>')
                             .scrollTop($("#divgamecontent")[0].scrollHeight);
                         $(this).val("");
                     } else {
                         l.addToLeaderBoard(nt, l.getPoints())
-                        sendJson(JSON.stringify(l)).then(function() {
-                                $(".labelgamecontent").remove();
-                                $("#game > br").remove();
-                                $("#divgamecontent").append('<label class="labelgamecontent">Bitte warten Sie kurz</label>');
-                                $("#inputgame").val("")
-                                    .attr("placeholder", "Was möchtest du tun?")
-                                    .attr("disabled", "true");
-                                $(".score").text("Punkte: 0");
+                        sendJson(JSON.stringify(l));
 
-                                //console.log(l.getName());
+                        $(".labelgamecontent").remove();
+                        $("#game > br").remove();
+                        $("#divgamecontent").append('<label class="labelgamecontent">Bitte kurz warten</label>');
+                        $("#inputgame").val("")
+                            .attr("placeholder", "Was möchtest du tun?")
+                            .attr("disabled", "true");
+                        $(".score").text("Punkte: 0");
 
-                                setTimeout(f => getLanguageJson(l.getName()).then(function(json1) {
-                                        l = Language.parse(json1);
+                        notWaiting = false;
+                        setTimeout(f => getLanguageJson(l.getName()).then(function (json1) {
+                                l = Language.parse(json1);
 
-                                        refreshLeaderboard(l);
+                                refreshLeaderboard(l);
 
-                                        $(".labelgamecontent").text(l.getEventText())
-                                            .append("<br>");
-                                        $("#inputgame").removeAttr("disabled");
-                                    },
-                                    function(reason) {
-                                        $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
-                                        console.log(reason);
-                                    }), 1500);
+                                $(".labelgamecontent").text(l.getEventText())
+                                    .append("<br>");
+                                $("#inputgame").removeAttr("disabled");
+                                notWaiting = true;
                             },
-                            function(reason) {
+                            function (reason) {
                                 $("#divgamecontent").append('<label class="labelgamecontent">Verbindung zum Server unterbrochen</label><br>');
                                 console.log(reason);
-                            });
+                            }), 1500);
                     }
+
                 }
-                if (l.isFinished()) {
-                    $("#inputgame").attr("placeholder", "Geben Sie Ihren Namen ein.");
-                    $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Geben Sie einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>')
+                if (l.isFinished() && notWaiting) {
+                    $("#inputgame").attr("placeholder", "Gebe deinen Namen ein.");
+                    $("#divgamecontent").append('<label class=labelgamecontent>Game Over! Gib einen Namen ein, welcher auf dem Leaderboard erscheinen soll.</label>')
                         .scrollTop($("#divgamecontent")[0].scrollHeight);
                 }
             }
