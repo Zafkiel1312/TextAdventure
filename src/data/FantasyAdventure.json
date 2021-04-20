@@ -1,0 +1,43 @@
+{"name":"FantasyAdventure",
+  "rules":[
+    {"from":"HEIMAT","to":["a","UFER"],"eventText":"Als du dich den Dracheninseln näherst, siehst du in der Ferne einen Steg, an dem ein Fährmann sein Boot vertäut hat. Willst du ihn fragen, ob er dich übersetzen kann (a) oder willst du versuchen, einen eigenen Weg auf die Insel zu finden (b)?","points":0},
+    {"from":"UFER","to":["a","INSEL"],"eventText":"Der Fährmann erklärt sich dazu bereit, dich kostenlos mitzunehmen und setzt mit dir auf die Insel über. Am anderen Ufer angekommen beginnst du damit, die Insel zu erkunden (a).","points":20},
+    {"from":"UFER","to":["a","WEG"],"eventText":"Der Fährmann verlangt 25 Goldstücke für die Fahrt. So viel Geld hast du allerdings nicht. Versuchst du einen eigenen Weg auf die Insel zu finden (a) oder machst du dich auf den Weg in die Berge (b)?","points":0},
+    {"from":"UFER","to":["b","BERGE"],"eventText":"Du gehst am Ufer entlang in der Hoffnung, einen anderen Weg auf die Insel zu finden, doch du wirst enttäuscht. Überall ist das Wasser zu tief, um zu schwimmen oder die Insel ist einfach zu weit weg. Du drehst um und machst dich auf den Weg in die Berge (a). Vielleicht hast du dort mehr Glück.","points":0},
+    {"from":"UFER","to":["b","INSEL"],"eventText":"Du gehst am Ufer entlang und entdeckst eine Landzunge, die es dir möglich macht, auf die Insel zu schwimmen. Genau das tust du dann auch und beginnst damit, die Insel zu erkunden (a).","points":20},
+    {"from":"INSEL","to":["a","EI"],"eventText":"Als die Nacht einbricht und du Feuerholz für ein Lagerfeuer suchst, findest du ein ungewöhnliches Ei. Möchtest du es mitnehmen (a) oder liegen lassen (b)?","points":0},
+    {"from":"EI","to":["a","EIPT2"],"eventText":"Du hebst das Ei vorsichtig auf und steckst es in deinen Rucksack. Nachdem du genug Feuerholz gesammelt hast, gehst du zu deinem Lagerplatz und zündest das Lagerfeuer an. Du bemerkst, dass dein Proviant langsam knapp wird. Geld hast du allerdings auch kaum noch. Willst du das Ei braten (a) oder es lieber mitnehmen und in der nächsten Stadt verkaufen (b)?","points":20},
+    {"from":"EIPT2","to":["a"],"eventText":"Als du gerade dabei bist, das Ei in deine Pfanne zu schlagen, verlierst du plötzlich den Boden unter den Füßen. Als du nach oben schaust, stockt dir der Atem. Ein Drache hat dich mit seinen Klauen gepackt und schraubt sich mit dir immer und immer höher in die Lüfte. Die Insel wird immer kleiner unter dir und die Luft immer dünner. Der Drache lässt dich allerdings fallen, bevor du in Ohnmacht fallen kannst.","points":0},
+    {"from":"EIPT2","to":["a"],"eventText":"Du brätst dir ein Spiegelei und isst es, doch danach fühlst du dich irgendwie komisch. 'Das Ei muss wohl giftig gewesen sein..' denkst du noch, bevor dir schwarz vor Augen wird.","points":0},
+    {"from":"EIPT2","to":["a","ENTSCHEIDUNG"],"eventText":"Du brätst das Ei und genießt dein vorzügliches Abendessen. Du überlegst, wie du deine Reise am nächsten Tag fortführen willst. Willst du weiter die Insel erkunden (a) oder die Insel verlassen (b)?","points":0},
+    {"from":"EI","to":["b","ENTSCHEIDUNG"],"eventText":"Du lässt das Ei liegen und sammelst weiter Holz für dein Lagerfeuer. Du überlegst, wie du deine Reise am nächsten Tag fortführen willst. Willst du weiter die Insel erkunden (a) oder die Insel verlassen (b)?","points":0},
+    {"from":"INSEL","to":["a","HÖHLE"],"eventText":"Beim Erkunden der Insel fällt dir eine große Höhle auf. Du kannst allerdings nicht erkennen, was sich darin befindet und wie tief die Höhle in den Berg hineinführt. Willst du dich hineinwagen (a) oder lieber den Rest der Insel erkunden (b)?","points":0},
+    {"from":"HÖHLE","to":["b","INSEL"],"eventText":"Du stufst die Höhle als zu gefährlich ein und beschließt deshalb, zuerst den Rest der Insel zu erkunden (a).","points":0},
+    {"from":"HÖHLE","to":["a","HÖHLE2"],"eventText":"Du entscheidest dich, die Höhle zu betreten. Als du dich weiter hineinwagst, hörst du plötzlich ein tiefes Grollen, welches den Berg zum Beben bringt. Gehst du weiter hinein (a) oder verschwindest du, solange du noch kannst (b)?","points":20},
+    {"from":"HÖHLE2","to":["b","ENTSCHEIDUNG"],"eventText":"Du verlässt die Höhle so schnell, wie du kannst und holst davor angekommen erst einmal tief Luft. Das Geräusch steckt dir noch tief in den Knochen. Willst du deine Inselerkundung fortsetzen (a) oder die Insel verlassen (b)?","points":-20},
+    {"from":"HÖHLE2","to":["a"],"eventText":"Du wagst dich tiefer in die Höhle. Vor dir siehst du einen Lichtschein, der immer heller wird, je näher du ihm kommst. Der schmale Gang, dem du bisher gefolgt bist, öffnet sich zu einer großen Höhle, in die etwas Licht durch ein Loch an der Decke hineinscheint. Der Drache entdeckt dich, bevor du ihn bemerkst und das Letzte, was du siehst, sind die spitzen Zähne des Drachens, bevor er dich verschlingt.","points":0},
+    {"from":"HÖHLE2","to":["a","ENTSCHEIDUNG"],"eventText":"Du wagst dich tiefer in die Höhle. Vor dir siehst du einen Lichtschein, der immer heller wird, je näher du ihm kommst. Der schmale Gang, dem du bisher gefolgt bist, öffnet sich zu einer großen Höhle, in die etwas Licht durch ein Loch an der Decke hineinscheint. In der Mitte der Höhle liegt ein fauler Drache zusammengerollt auf dem Boden. Als er dich bemerkt, hebt er nur kurz den Kopf und schnauft etwas. Enttäuscht verlässt du die Höhle wieder. Willst du deine Inselerkundung fortsetzen (a) oder die Insel verlassen (b)?","points":20},
+    {"from":"ENTSCHEIDUNG","to":["b","BERGE"],"eventText":"Du hast die komplette Insel erkundet und möchtest nun andere Teile der Welt sehen. So machst du dich auf in die Berge (a).","points":100},
+    {"from":"ENTSCHEIDUNG","to":["a","INSEL"],"eventText":"Nach einer wohlverdienten Pause machst du dich dazu auf, die Insel weiter zu erkunden. (a)","points":0},
+
+    {"from":"HEIMAT","to":["b","GABEL"],"eventText":"Auf dem Weg in die Berge kommst du in einen Wald. Nach einer Weile triffst du auf eine Weggabelung. Möchtest du nach links (a) oder nach rechts (b) gehen?","points":0},
+    {"from":"BERGE","to":["a","GABEL"],"eventText":"Auf dem Weg in die Berge kommst du in einen Wald. Nach einer Weile triffst du auf eine Weggabelung. Möchtest du nach links (a) oder nach rechts (b) gehen?","points":0},
+    {"from":"GABEL","to":["a","BERGFUSS"],"eventText":"Du durchquerst den Wald unbeschadet und kommst am Fuße des Berges an. Möchtest du ein Lager aufschlagen (a) oder dich schon an den Aufstieg wagen (b)?","points":0},
+    {"from":"GABEL","to":["a","FAIRIES"],"eventText":"Du folgst dem Weg und kommst auf eine Lichtung. Du kannst einige kleine Gebäude erkennen, viel zu groß für einen Menschen. Möchtest du näher herangehen (a) oder die Siedlung von weitem beobachten? (b)","points":0},
+    {"from":"GABEL","to":["b","DOGGO"],"eventText":"Du folgst dem Weg weiter und nach einer Weile fühlst du dich beobachtet. Du siehst dich immer wieder um, kannst aber nichts entdecken. Langsam wird es dunkel. Möchtest du ein Lager aufschlagen (a) oder deinen Weg fortsetzen (b)?","points":0},
+    {"from":"GABEL","to":["b","BERGFUSS"],"eventText":"Du durchquerst den Wald unbeschadet und kommst am Fuße des Berges an. Möchtest du ein Lager aufschlagen (a) oder dich schon an den Aufstieg wagen (b)?","points":0},
+    {"from":"BERGFUSS","to":["a","AUFSTIEG1"],"eventText":"Du schlägst dein Lager auf und wachst am nächsten Morgen gut ausgeruht auf, um den Aufstieg auf den Berg in Angriff zu nehmen (a).","points":0},
+    {"from":"BERGFUSS","to":["a","AUFSTIEG2"],"eventText":"Du schlägst dein Lager auf und machst dich bereit, schlafen zu gehen. Doch eine Eule in einem nahegelegenen Baum lässt dir keine Ruhe und so bist du am nächsten Morgen unausgeschlafen. Du trittst trotzdem den Aufstieg an (a).","points":0},
+    {"from":"AUFSTIEG1","to":["a","PEAK"],"eventText":"Du beginnst den Aufstieg auf den Berg. Oben angekommen genießt du die Aussicht. Willst du noch eine Weile auf der Bergspitze bleiben (a) oder den Abstieg beginnen (b)?","points":0},
+    {"from":"","to":["",""],"eventText":"","points":0},
+
+
+    {"from":"","to":["",""],"eventText":"","points":0},
+    {"from":"","to":[""],"eventText":"","points":0}
+  ],
+  "path":["b","b","b","b","b","a",null],
+  "startText":"Du bist ein junger Abenteurer, der seine Heimatstadt verlässt, um in der Ferne sein Glück zu finden. Führt dich dein erstes Abenteuer auf die Dracheninsel, auf der sich den Gerüchten nach die letzten Drachen befinden (a), oder in die Berge, von denen man sich erzählt, dass dort Trolle und andere mystische Wesen hausen (b)?",
+  "eventText":"Du wurdest im Schlaf getötet.",
+  "points":0,
+  "leaderBoard":[]
+}
