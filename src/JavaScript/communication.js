@@ -1,5 +1,3 @@
-//ToDo Senden von json von Client zu Server
-
 // gibt die angegebene Sprache als json-Datei zurück
 async function getLanguageJson(name){
     let json = "hallo";

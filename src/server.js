@@ -4,12 +4,11 @@ let server = require('http').createServer(app);
 let WebSocket = require('ws');
 let path = require("path");
 
-//
+
 let wss = new WebSocket.Server({server});
 let sprache;
 let name;
 
-//ToDo Werden die WebSockets automatisch geschlossen oder entstehen durch die Funktion immer mehr unnötige Verbindungen?
 wss.on('connection', function connection(ws){
     ws.on('message', message=> {
         sprache = JSON.parse(message);
@@ -52,8 +51,5 @@ app.get('/languages', function(req, res) {
     })
 });
 
-/*app.get('/Testsprache', function(req, res){
-    res.sendFile(path.join(__dirname, 'data', 'Abenteuer.json'));
-});*/
 
 server.listen(3000, () => console.log('Running on port 3000'));

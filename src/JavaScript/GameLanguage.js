@@ -37,7 +37,6 @@ function startGame() {
 
     getAllLanguages().then(function(data) {
         data.forEach(function(name) {
-            //let idDropdown = 'myDropdown', idOuterDiv = 'outerDiv', idOuterBtn = 'outerBtn', idDropdownBtn = 'dropdownBtn';
             let idOuterDiv = 'outerDiv' + name;
             let idOuterBtn = 'outerBtn' + name;
             let idDropdown = 'myDropdown' + name;
@@ -45,7 +44,7 @@ function startGame() {
 
 
             $("#language").append("<div class='dropdown' id='" + idOuterDiv + "'> </div>");
-            //console.log(idOuterDiv);
+
             $("#" + idOuterDiv).append("<button id='" + idOuterBtn + "' class='dropbtn'>" + name + " </button>")
                 .append("<div id='" + idDropdown + "' class='dropdown-content'></div>");
 
@@ -64,14 +63,6 @@ function startGame() {
             $(".labelgamecontent").text("Verbindung zum Server nicht möglich");
             console.log(reason);
         });
-
-     /*
-        <div class="dropdown" >
-            <button onclick="myFunction()" class="dropbtn">Game1</button>
-            <div id="myDropdown" class="dropdown-content">
-                <button id="b1" class="dropdown-button">spielen</button>
-            </div>
-        </div> */
 }
 
 
@@ -125,7 +116,6 @@ function chooseLanguage(name) {
                         $("#divgamecontent").append('<label class="labelgamecontent">' + nt + '<!label><br>')
                             .append('<label class="labelgamecontent">' + l.getEventText() + '<!label><br>')
                             .scrollTop($("#divgamecontent")[0].scrollHeight);
-                        // var scrollBottom = $(window).scrollTop() + $(window).height();
                         $(this).val("");
                         $(".score").text("Punkte: " + l.getPoints());
                     } else if (!l.isFinished()) {

@@ -79,7 +79,7 @@ function myOnLoad() {
 	}
   });
 
-  $("#restart").on("click", function() {
+  /*$("#restart").on("click", function() {
     let json = JSON.stringify(l);
 
     l = Language.parse(json);
@@ -91,7 +91,7 @@ function myOnLoad() {
     $("#points").html("Derzeitige Punkte: " + l.getPoints());
 
     console.log(JSON.stringify(l));
-  });
+  });*/
 
   $("#allLanguages").on("click", function(){
     getAllLanguages().then(function (array){
